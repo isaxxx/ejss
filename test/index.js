@@ -1,4 +1,4 @@
-const ejsHtmlCli = require('../index');
+const ejss = require('../index');
 const test = require('ava');
 const path = require('path');
 const fs = require('fs-extra');
@@ -6,7 +6,7 @@ const fs = require('fs-extra');
 // test
 
 test('compile HTML - case 001', (t) => {
-	return ejsHtmlCli({
+	return ejss({
 		src: 'test/fixtures/case-001/index.ejs',
 		options: 'test/fixtures/case-001/options.json'
 	}, (str) => {
@@ -15,7 +15,7 @@ test('compile HTML - case 001', (t) => {
 });
 
 test('compile HTML - case 002', (t) => {
-	return ejsHtmlCli({
+	return ejss({
 		src: 'test/fixtures/case-002/about.ejs',
 		options: 'test/fixtures/case-002/options.json'
 	}, (str) => {
@@ -24,7 +24,7 @@ test('compile HTML - case 002', (t) => {
 });
 
 test('resolve path - case 003', (t) => {
-	return ejsHtmlCli({
+	return ejss({
 		src: 'test/fixtures/case-003/*',
 		options: 'test/fixtures/case-003/options.json'
 	}, (str) => {
@@ -33,7 +33,7 @@ test('resolve path - case 003', (t) => {
 });
 
 test('no file - case 004', (t) => {
-	return ejsHtmlCli({
+	return ejss({
 		src: 'test/fixtures/case-004/**/*',
 		options: 'test/fixtures/case-004/options.json'
 	}, (str) => {
