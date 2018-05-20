@@ -1,0 +1,27 @@
+{
+	"common": {
+		"path": {
+			"js": "/assets/js/",
+			"css": "/assets/css/",
+			"images": "/assets/img/"
+		}
+	},
+	"personal": {
+		"/index.ejs": {
+			"title": "Home",
+			"keywords": "keywords in home",
+			"description": "description in home",
+			"style": "/assets/css/home.css",
+			"script": "/assets/js/home.js",
+			"bodyClass": "page-home"
+		},
+		"/about/index.ejs": {
+			"title": "About",
+			"keywords": "keywords in about",
+			"description": "description in about",
+			"style": "/assets/css/about.css",
+			"script": "/assets/js/about.js",
+			"bodyClass": "page-about"
+		}
+	}
+}

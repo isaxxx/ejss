@@ -1,0 +1,13 @@
+{
+	"common": {
+		"description": "dummy text."
+	},
+	"personal": {
+		"/index.ejs": {
+			"title": "Index"
+		},
+		"/about.ejs": {
+			"title": "About"
+		}
+	}
+}
