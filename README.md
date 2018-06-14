@@ -18,28 +18,29 @@ $ npm install ejss --save
 
 ```
 Options:
-  --src           source directory path. [string] [default: "src/ejs/**/*.ejs"]
-  --dest          destination directory path. [string] [default: "dest"]
-  --options       options json file path. (need setting root directory) [string] [default: "src/ejs/options.json"]
-  --personal      personal key in options file. [string] [default: "personal"]
-  --version, -v   show this version. [boolean]
-  --help, -h      show this help. [boolean]
+  --src source directory path. [string] [default: './src/ejs/**/*.ejs']
+  --dest destination directory path. [string] [default: './dest/']
+  --data data json file path. [string] [default: './src/ejs/data.json']
+  --compression whether to compression. [bool] [default: false]
+  --log whether to log. [bool] [default: true]
+  --version, -v show this version. [boolean]
+  --help, -h show this help. [boolean]
 ```
 
 ## Example
 
 ```bash
-$ ejss --src src/ --dest dest/ --options src/options.json --personal personal
+$ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --compression false --log true
 ```
 
-##### src/options.json
+### ./src/ejs/data.json
 
 ```json
 {
   "common": {
     "description": "dummy text."
   },
-  "personal": {
+  "page": {
     "/index.ejs": {
       "title": "Index"
     },
@@ -50,11 +51,11 @@ $ ejss --src src/ --dest dest/ --options src/options.json --personal personal
 }
 ```
 
-##### src/index.ejs
+### ./src/ejs/index.ejs
 
 ```html
 <html>
-  <h1><%= personal.title %></h1>
+  <h1><%= page.title %></h1>
   <p><%= common.description %></p>
 </html>
 <!--
@@ -65,11 +66,11 @@ $ ejss --src src/ --dest dest/ --options src/options.json --personal personal
 -->
 ```
 
-##### src/about.ejs
+### ./src/ejs/about.ejs
 
 ```html
 <html>
-  <h1><%= personal.title %></h1>
+  <h1><%= page.title %></h1>
   <p><%= common.description %></p>
 </html>
 <!--

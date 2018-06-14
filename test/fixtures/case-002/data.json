@@ -2,7 +2,7 @@
 	"common": {
 		"description": "dummy text."
 	},
-	"personal": {
+	"page": {
 		"/index.ejs": {
 			"title": "Index"
 		},
