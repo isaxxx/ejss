@@ -1,0 +1,13 @@
+{
+	"common": {
+		"description": "dummy text."
+	},
+	"page": {
+		"/index.ejs": {
+			"title": "Index"
+		},
+		"/about.ejs": {
+			"title": "About"
+		}
+	}
+}

@@ -1,6 +1,6 @@
 {
   "name": "ejss",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Tools to convert EJS to HTML with detailed options.",
   "main": "./index.js",
   "bin": {
@@ -29,6 +29,7 @@
     "fs-extra": "^4.0.3",
     "glob": "^7.1.2",
     "glob-base": "^0.3.0",
+    "htmlhint": "^0.9.13",
     "minimize": "^2.2.0",
     "path": "^0.12.7",
     "update-notifier": "^2.3.0",

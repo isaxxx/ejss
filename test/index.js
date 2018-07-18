@@ -63,3 +63,18 @@ test('no file - case 004', (t) => {
 		}
 	});
 });
+
+test('lint check - case 005', (t) => {
+	return ejss({
+		src: 'test/fixtures/case-005/*',
+		data: 'test/fixtures/case-005/data.json',
+		lint: 'test/fixtures/case-005/.htmlhint',
+		log: true
+	}, (err, str) => {
+		if (!err) {
+			t.pass();
+		} else {
+			t.fail();
+		}
+	});
+});

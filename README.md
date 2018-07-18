@@ -22,6 +22,7 @@ Options:
   --dest destination directory path. [string] [default: './dest/']
   --data data json file path. [string] [default: './src/ejs/data.json']
   --compression whether to compression. [bool] [default: false]
+  --lint htmlhint config file path. [string] [default: '']
   --log whether to log. [bool] [default: true]
   --version, -v show this version. [boolean]
   --help, -h show this help. [boolean]
