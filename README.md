@@ -18,23 +18,24 @@ $ npm install ejss --save
 
 ```
 Options:
-  --src source directory path. [string] [default: './src/ejs/**/*.ejs']
-  --dest destination directory path. [string] [default: './dest/']
-  --data data json file path. [string] [default: './src/ejs/data.json']
-  --compression whether to compression. [bool] [default: false]
-  --lint htmlhint config file path. [string] [default: '']
-  --log whether to log. [bool] [default: true]
-  --version, -v show this version. [boolean]
-  --help, -h show this help. [boolean]
+  --src           src files path pattern. [string] [default: './src/ejs/**/*.ejs']
+  --dest          dest directory path. [string] [default: './dest/']
+  --data          data json file path. [string] [default: './src/ejs-data.json']
+  --compression   whether to compression. [bool] [default: false]
+  --lint          htmlhint config file path. [string] [default: '']
+  --version, -v   show this version. [boolean]
+  --help, -h      show this help. [boolean]
 ```
 
 ## Example
 
+### CLI
+
 ```bash
-$ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --compression false --log true
+$ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --compression true
 ```
 
-### ./src/ejs/data.json
+### JSON
 
 ```json
 {
@@ -42,23 +43,26 @@ $ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --comp
     "description": "dummy text."
   },
   "page": {
-    "/index.ejs": {
+    "/index.html": {
       "title": "Index"
     },
-    "/about.ejs": {
+    "/about.html": {
       "title": "About"
     }
   }
 }
 ```
 
-### ./src/ejs/index.ejs
+### EJS
+
+#### /index.ejs
 
 ```html
 <html>
   <h1><%= page.title %></h1>
   <p><%= common.description %></p>
 </html>
+
 <!--
 <html>
   <h1>Index</h1>
@@ -67,13 +71,14 @@ $ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --comp
 -->
 ```
 
-### ./src/ejs/about.ejs
+#### /about.ejs
 
 ```html
 <html>
   <h1><%= page.title %></h1>
   <p><%= common.description %></p>
 </html>
+
 <!--
 <html>
   <h1>About</h1>

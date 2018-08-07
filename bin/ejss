@@ -1,11 +1,3 @@
 #!/usr/bin/env node
 
-/**
- *
- * ejss
- *
- */
-
-'use strict';
-
 require('../lib/cli');

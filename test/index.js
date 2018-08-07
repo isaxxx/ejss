@@ -1,80 +1,59 @@
-/**
- *
- * index
- *
- */
-
-'use strict';
-
-const ejss = require('../index');
 const test = require('ava');
-const path = require('path');
 const fs = require('fs-extra');
+const ejss = require('../index');
 
-test('compile HTML - case 001', (t) => {
-	return ejss({
-		src: 'test/fixtures/case-001/index.ejs',
-		data: 'test/fixtures/case-001/data.json'
-	}, (err, str) => {
-		if (!err) {
-			t.is(str, fs.readFileSync(path.resolve(__dirname, 'expect/case-001/index.html'), 'UTF-8'));
-		} else {
-			t.fail();
-		}
-	});
+test('parse - case 001', (t) => {
+  return ejss({
+    src: './test/fixtures/case-001/ejs/**/*.ejs',
+    dest: './dest/case-001/',
+    data: './test/fixtures/case-001/ejs-data.json',
+    lint: './test/fixtures/case-001/.htmlhintrc.json'
+  }).then(() => {
+    const processing = [];
+    processing.push(new Promise((resolve, reject) => {
+      if (fs.readFileSync('./test/expect/case-001/index.html', 'UTF-8') === fs.readFileSync('./dest/case-001/index.html', 'UTF-8')) {
+        resolve();
+      } else {
+        reject();
+      }
+    }));
+    processing.push(new Promise((resolve, reject) => {
+      if (fs.readFileSync('./test/expect/case-001/about.html', 'UTF-8') === fs.readFileSync('./dest/case-001/about.html', 'UTF-8')) {
+        resolve();
+      } else {
+        reject();
+      }
+    }));
+    processing.push(new Promise((resolve, reject) => {
+      if (fs.readFileSync('./test/expect/case-001/contact/index.html', 'UTF-8') === fs.readFileSync('./dest/case-001/contact/index.html', 'UTF-8')) {
+        resolve();
+      } else {
+        reject();
+      }
+    }));
+    processing.push(new Promise((resolve, reject) => {
+      if (fs.readFileSync('./test/expect/case-001/test/index.html', 'UTF-8') === fs.readFileSync('./dest/case-001/test/index.html', 'UTF-8')) {
+        resolve();
+      } else {
+        reject();
+      }
+    }));
+    Promise.all(processing).then(() => {
+      t.pass();
+    }).catch(() => {
+      t.fail();
+    });
+  });
 });
 
-test('compile HTML - case 002', (t) => {
-	return ejss({
-		src: 'test/fixtures/case-002/about.ejs',
-		data: 'test/fixtures/case-002/data.json'
-	}, (err, str) => {
-		if (!err) {
-			t.is(str, fs.readFileSync(path.resolve(__dirname, 'expect/case-002/about.html'), 'UTF-8'));
-		} else {
-			t.fail();
-		}
-	});
-});
-
-test('resolve path - case 003', (t) => {
-	return ejss({
-		src: 'test/fixtures/case-003/*',
-		data: 'test/fixtures/case-003/data.json'
-	}, (err, str) => {
-		if (!err) {
-			t.is(str, fs.readFileSync(path.resolve(__dirname, 'expect/case-003/index.html'), 'UTF-8'));
-		} else {
-			t.fail();
-		}
-	});
-});
-
-test('no file - case 004', (t) => {
-	return ejss({
-		src: 'test/fixtures/case-004/**/*',
-		data: 'test/fixtures/case-004/data.json',
-		log: false
-	}, (err, str) => {
-		if (err && !str) {
-			t.pass();
-		} else {
-			t.fail();
-		}
-	});
-});
-
-test('lint check - case 005', (t) => {
-	return ejss({
-		src: 'test/fixtures/case-005/*',
-		data: 'test/fixtures/case-005/data.json',
-		lint: 'test/fixtures/case-005/.htmlhint',
-		log: true
-	}, (err, str) => {
-		if (!err) {
-			t.pass();
-		} else {
-			t.fail();
-		}
-	});
+test('compression - case 002', (t) => {
+  return ejss({
+    src: './test/fixtures/case-002/ejs/**/*.ejs',
+    dest: './dest/case-002/',
+    data: './test/fixtures/case-002/ejs-data.json',
+    compression: true,
+    lint: './test/fixtures/case-002/.htmlhintrc.json'
+  }).then(() => {
+    t.is(fs.readFileSync('./test/expect/case-002/index.html', 'UTF-8'), fs.readFileSync('./dest/case-002/index.html', 'UTF-8'));
+  });
 });

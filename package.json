@@ -1,18 +1,22 @@
 {
   "name": "ejss",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Tools to convert EJS to HTML with detailed options.",
   "main": "./index.js",
   "bin": {
     "ejss": "./bin/ejss"
   },
   "scripts": {
-    "test": "ava --verbose"
+    "test": "ava --verbose",
+    "check": "eslint .",
+    "git-ignore": "git rm -r --cached . && git add -A && git commit --allow-empty -m 'gitignore-refresh' && git reset --soft HEAD^",
+    "git-commit": "git add -A && git commit",
+    "git-push": "git push origin master",
+    "npm-publish": "npm publish"
   },
   "keywords": [
     "ejs",
-    "html",
-    "tools"
+    "html"
   ],
   "engines": {
     "node": ">=6.11.4"
@@ -36,6 +40,7 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "ava": "^0.25.0"
+    "ava": "^0.25.0",
+    "eslint": "^5.3.0"
   }
 }
