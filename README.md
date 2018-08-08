@@ -8,13 +8,15 @@ Tools to convert EJS to HTML with detailed options.
 
 ## Installation
 
-### npm
+### NPM
 
 ```bash
 $ npm install ejss --save
 ```
 
 ## Usage
+
+### CLI
 
 ```
 Options:
@@ -27,12 +29,22 @@ Options:
   --help, -h      show this help. [boolean]
 ```
 
-## Example
-
-### CLI
-
 ```bash
 $ ejss --src ./src/ejs/**/*.ejs --dest ./dest/ --data ./src/ejs/data.json --compression true
+```
+
+### JavaScript
+
+```js
+ejss({
+  src: './src/ejs/**/*.ejs',
+  dest: './dest/',
+  data: './src/ejs-data.json',
+  compression: false,
+  lint: './.htmlhintrc.json'
+}).then(() => {
+  console.log('Complete!!');
+});
 ```
 
 ### JSON
