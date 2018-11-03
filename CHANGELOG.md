@@ -1,3 +1,7 @@
+# 1.2.3 (2018-11-03)
+
+- Fix: minimize option
+
 # 1.2.2 (2018-08-08)
 
 - Fix: readme.txt

@@ -1,6 +1,6 @@
 {
   "name": "ejss",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Tools to convert EJS to HTML with detailed options.",
   "main": "./index.js",
   "bin": {
